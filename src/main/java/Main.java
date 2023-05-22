@@ -15,7 +15,13 @@ public class Main {
             String line = in.nextLine();
             if (line.equals("q")) break;
 
-            Command com = Command.of(line);
+            Command com;
+            try {
+                 com = Command.of(line);
+            } catch (NumberFormatException nfe) {
+                System.out.println("Неверный формат. Введите 2 числа:");
+                continue;
+            }
             String result = "";
             switch(com.sign) {
                 case '+' -> result = String.valueOf(calc.add(com.numbers[0], com.numbers[1]));
@@ -29,7 +35,7 @@ public class Main {
 
     private record Command(char sign, int[] numbers) {
 
-        public static Command of(String lineToParse) {
+        public static Command of(String lineToParse) throws NumberFormatException {
 
             String[] numbersToParse = lineToParse.split("[+*/-]");
             String[] signToParse = lineToParse.split("\\d+");
