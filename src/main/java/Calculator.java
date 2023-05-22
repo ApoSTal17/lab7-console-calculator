@@ -11,7 +11,11 @@ public class Calculator {
         return a * b;
     }
 
-    public int division(int a, int b) {
+    public int intDivision(int a, int b) {
         return a / b;
+    }
+
+    public float floatDivision(int a, int b) {
+        return (float) a / b;
     }
 }

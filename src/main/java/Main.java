@@ -27,7 +27,8 @@ public class Main {
                 case '+' -> result = String.valueOf(calc.add(com.numbers[0], com.numbers[1]));
                 case '-' -> result = String.valueOf(calc.sub(com.numbers[0], com.numbers[1]));
                 case '*' -> result = String.valueOf(calc.multiply(com.numbers[0], com.numbers[1]));
-                case '/' -> result = String.valueOf(calc.division(com.numbers[0], com.numbers[1]));
+                case ':' -> result = String.valueOf(calc.floatDivision(com.numbers[0], com.numbers[1]));
+                case '/' -> result = String.valueOf(calc.intDivision(com.numbers[0], com.numbers[1]));
             }
             System.out.println(result);
         }
@@ -37,7 +38,7 @@ public class Main {
 
         public static Command of(String lineToParse) throws NumberFormatException {
 
-            String[] numbersToParse = lineToParse.split("[+*/-]");
+            String[] numbersToParse = lineToParse.split("[+*/:-]");
             String[] signToParse = lineToParse.split("\\d+");
 
             char sign = stream(signToParse)
