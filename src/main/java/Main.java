@@ -17,13 +17,17 @@ public class Main {
 
             Command com = Command.of(line);
             String result = "";
-            switch(com.sign) {
-                case '+' -> result = String.valueOf(calc.add(com.numbers[0], com.numbers[1]));
-                case '-' -> result = String.valueOf(calc.sub(com.numbers[0], com.numbers[1]));
-                case '*' -> result = String.valueOf(calc.multiply(com.numbers[0], com.numbers[1]));
-                case '/' -> result = String.valueOf(calc.division(com.numbers[0], com.numbers[1]));
+            try {
+                switch (com.sign) {
+                    case '+' -> result = String.valueOf(calc.add(com.numbers[0], com.numbers[1]));
+                    case '-' -> result = String.valueOf(calc.sub(com.numbers[0], com.numbers[1]));
+                    case '*' -> result = String.valueOf(calc.multiply(com.numbers[0], com.numbers[1]));
+                    case '/' -> result = String.valueOf(calc.division(com.numbers[0], com.numbers[1]));
+                }
+                System.out.println(result);
+            } catch (ArithmeticException e) {
+                System.out.println("Ошибка: деление на 0.");
             }
-            System.out.println(result);
         }
     }
 
